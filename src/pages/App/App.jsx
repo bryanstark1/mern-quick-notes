@@ -18,21 +18,26 @@ export default function App() {
     // console.log(getNotes());
     const response = await getNotes();
     setNotes(response);
+    getNote();
   };
 
+  const getNote = async () => {
+    const response = await getNotes();
+    console.log(response)
+    setNotes(response);
+  }
   useEffect(() => {
-    const getNote = async () => {
-      const response = await getNotes();
-      setNotes(response);
+    // getNote();
+    if (user) {
+      getNote();
     }
-    getNote();
   }, []);
 
   return (
     <main className="App">
       { user ?
           <>
-            <NavBar user={user} setUser={setUser} />
+            <NavBar user={user} setUser={setUser} setNotes={setNotes} />
             <Routes>
               {/* Route components in here */}
               <Route path="/orders/new" element={<NewOrderPage />} />
@@ -41,7 +46,7 @@ export default function App() {
             </Routes>
           </>
           :
-          <AuthPage setUser={setUser} />
+          <AuthPage setUser={setUser} getNote={getNote} />
       }
     </main>
   );
