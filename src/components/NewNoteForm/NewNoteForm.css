@@ -1,0 +1,18 @@
+form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 1px 10px 0px rgba(0,0,0,.2);
+  padding: 1rem;
+  background-color: burlywood;
+}
+
+textarea {
+  align-self: center;
+  width: 80%;
+}
+
+button {
+  width: 20%;
+  align-self: center;
+  font-size: 1rem;
+}
