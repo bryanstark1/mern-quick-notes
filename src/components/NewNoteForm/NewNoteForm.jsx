@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createNote } from '../../utilities/notes-service'
 import './NewNoteForm.css';
 
 export default function NewNoteForm({ addNotes }) {
@@ -13,7 +14,6 @@ export default function NewNoteForm({ addNotes }) {
 
   function handleAddNote(e) {
     e.preventDefault();
-    console.log(newNote)
     addNotes(newNote);
     setNewNote({
       text: ''

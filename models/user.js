@@ -34,17 +34,5 @@ userSchema.pre('save', async function(next) {
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
 });
 
-// const noteSchema = new Schema({
-//   text: {type: String, required: true},
-//   user: {type: Schema.Types.ObjectId, ref: 'User'}
-// }, {
-//   timestamps: true
-// });
 
-const User = mongoose.model('User', userSchema);
-// const Note = mongoose.model('Note', noteSchema);
-
-module.exports = {
-  User,
-  // Note
-}
+module.exports = mongoose.model('User', userSchema);

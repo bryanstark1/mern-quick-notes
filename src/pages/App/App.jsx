@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import { getNotes } from '../../utilities/notes-api';
+import { getNotes, createNote } from '../../utilities/notes-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
@@ -13,9 +13,20 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [notes, setNotes] = useState([]);
 
-  function addNote(note) {
-    setNotes([...notes, note]);
+  async function addNote(note) {
+    createNote(note);
+    // console.log(getNotes());
+    const response = await getNotes();
+    setNotes(response);
   };
+
+  useEffect(() => {
+    const getNote = async () => {
+      const response = await getNotes();
+      setNotes(response);
+    }
+    getNote();
+  }, []);
 
   return (
     <main className="App">

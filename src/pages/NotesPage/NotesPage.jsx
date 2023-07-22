@@ -11,7 +11,6 @@ export default function NotesPage({ notes, setNotes, addNotes }) {
     <>
       <h1>NotesPage</h1>
       {(notes.length !== 0) ? <ul>{noteListItems}</ul> : <h2>No Notes Yet!</h2>}
-      {console.log(notes)}
       <NewNoteForm addNotes={addNotes} />
     </>
   );
