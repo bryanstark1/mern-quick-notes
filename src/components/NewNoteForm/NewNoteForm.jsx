@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { createNote } from '../../utilities/notes-service'
 import './NewNoteForm.css';
 
 export default function NewNoteForm({ addNotes }) {
@@ -21,7 +20,7 @@ export default function NewNoteForm({ addNotes }) {
   };
 
   return (
-    <form onSubmit={handleAddNote}>
+    <form onSubmit={handleAddNote} className='new-note'>
       <textarea name='text' value={newNote.text} onChange={handleChange} cols="30" rows="10" placeholder='Add new note here...'></textarea>
       <button type='submit'>Submit</button>
     </form>

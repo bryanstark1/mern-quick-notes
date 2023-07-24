@@ -26,6 +26,7 @@ export default function App() {
     console.log(response)
     setNotes(response);
   }
+  
   useEffect(() => {
     // getNote();
     if (user) {
